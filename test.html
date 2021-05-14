@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ex1 Test HTML</title>
+    <link rel ="stylesheet" href="test.css">
+    <script src="learn.js"></script>
+    <script src="test.js"></script>
+</head>
+<body>
+    <button onclick="testQ1()" class="button">Toggle Question 1</button>
+    <div style="display: none" id="Q1">
+        <div id="quiz"></div>
+        <button id="submit" class="button">Submit Quiz</button>
+        <div id="results"></div>
+        <p id="desc1"></p>
+    </div>
+    <button onclick="testQ2()" class="button">Toggle Question 2</button>
+    <button onclick="testQ3()" class="button">Toggle Question 3</button>
+    <div style="display: block" id="Q4">
+        <form name="calcForm" onsubmit="return submitQ3()">
+            <label for="num">Number to calculate:</label>
+
+            <input type="text" id="num" name="num"><br><br>
+            <label for="method">Method to add or sub:</label>
+            <input type="text" id="method" name="method"><br><br>
+            <input type="submit" value="Submit">
+        </form>
+        <p id="desc2"></p>
+    </div>
+    <button onclick="testQ4()" class="button">Toggle Question 4</button>
+
+</body>
+</html>
