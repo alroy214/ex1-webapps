@@ -17,15 +17,12 @@
     </div>
     <button onclick="testQ2()" class="button">Toggle Question 2</button>
     <button onclick="testQ3()" class="button">Toggle Question 3</button>
-    <div style="display: block" id="Q4">
-        <form name="calcForm" onsubmit="return submitQ3()">
-            <label for="num">Number to calculate:</label>
-
-            <input type="text" id="num" name="num"><br><br>
-            <label for="method">Method to add or sub:</label>
-            <input type="text" id="method" name="method"><br><br>
-            <input type="submit" value="Submit">
-        </form>
+    <div  style="display: none" id="Q3">
+        <label for="num">Number to calculate:</label>
+        <input type="text" id="num"><br><br>
+        <label for="method">Method to add or sub:</label>
+        <input type="text" id="method"><br><br>
+        <button onclick="submitQ3()">Submit</button>
         <p id="desc2"></p>
     </div>
     <button onclick="testQ4()" class="button">Toggle Question 4</button>
