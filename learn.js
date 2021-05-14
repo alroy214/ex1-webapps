@@ -132,9 +132,39 @@ let q2 = function () {
     return { doSomething, desc }
 }
 
-function q3() {
 
-    function q3Constructor() {
+function qCalc() { // A method creating and returning a single {doSomething: ***, desc: ***} object
+    this.calcFactory = new Calculator();
+    this.desc = "Calculator you can use add or sub to increase or decrease the number to get the answer: "
+    return this;
+}
+
+function Calculator() { // Constructor for Calculator object
+    let value = 0;
+    this.add = function (num) {
+        value = (value + parseInt(num))
+    }
+    this.sub = function (num) {
+        value = (value - num)
+    }
+    this.getValue = function () {
+        return value
+    }
+}
+
+function qAsync(){
+    this.doAsync = function (ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+    }
+    this.desc = "in order to wait 11.5 sec, call exec which calls doAsync, and see the print in the console"
+    this.exec =  async function () {
+        await this.doAsync(11500);
+        console.log("did you see this after 11.5 sec?");
+    }
+}
+
+function q4() {
+    function q4Constructor() {
         let res = {
             doSomething: function () {
                 let k = { testValue: 5 }
@@ -160,34 +190,5 @@ function q3() {
         return res
     }
 
-    let objectFromFactory = q3Constructor()
-    return objectFromFactory
-}
-
-function qCalc() { // A method creating and returning a single {doSomething: ***, desc: ***} object
-
-    function q4Constructor() { // Constructor for {doSomething: ***, desc: ***}
-        this.calcFactory = function constructNewCalculator() { // A method creating and returning a single Calculator object
-            function Calculator() { // Constructor for Calculator object
-                let value = 0;
-                this.add = function (num) {
-                    value = value + num
-                }
-                this.sub = function (num) {
-                    value = value - num
-                }
-                this.getValue = function () {
-                    return value
-                }
-            }
-
-            return new Calculator();
-        }
-
-        this.desc = "doSomething: creates a calculator with a value that can be added, subtracted and can be returned. " +
-            "Usage: let calc = q4().doSomething() creates a new value"
-    }
-
-    let objectFromConstructor = new q4Constructor()
-    return objectFromConstructor
+    return q4Constructor()
 }
