@@ -30,11 +30,13 @@ function testQ2(){
 let calc = new qCalc();
 function testQ3() {
     toggleTestQuestion("Q3");
-    document.getElementById("desc2").innerHTML = calc.desc + calc.calcFactory.getValue();
+    document.getElementById("answer").innerHTML = "Answer: "+calc.calcFactory.getValue();
+    document.getElementById("desc3").innerHTML = calc.desc;
 }
 
 function submitQ3() {
-    document.getElementById("desc2").innerHTML = calc.desc + "calculating";
+    document.getElementById("answer").innerHTML = "Calculating";
+    document.getElementById("desc3").innerHTML = calc.desc;
     let num = document.getElementById("num").value;
     if (isNaN(num)) {
         alert("Input must be a number");
@@ -51,17 +53,15 @@ function submitQ3() {
         alert("The method input isn't correct, please type a legal input ('add' or 'sub')");
     }
 
-    document.getElementById("desc2").innerHTML = calc.desc + calc.calcFactory.getValue();
+    document.getElementById("answer").innerHTML = "Answer: "+calc.calcFactory.getValue();
+    document.getElementById("desc3").innerHTML = calc.desc;
 }
 
-function testQ4(){
-    let chainedLetters = q4();
-    alert("first let us decribe the function:\n" + chainedLetters.desc);
-    alert("now we will run doSomething.");
-    let strChain = chainedLetters.doSomething[0].name;
-    for(let i=0; i<chainedLetters.doSomething.length-1;i++){
-        strChain+="->"+(chainedLetters["doSomething"][i]).prototype.name;
+async function testQ4(){
+    let testAsync = new qAsync()
+    if(toggleTestQuestion("Q4")) {
+        document.getElementById("desc4").innerHTML = testAsync.desc;
+        document.getElementById("response").innerHTML = "Wait for it!";
+        testAsync.exec().then(value => document.getElementById("response").innerHTML = value)
     }
-    alert("the chain created is "+ strChain);
-
 }

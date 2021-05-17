@@ -123,7 +123,7 @@ let qSyntax = function () {
 
 let q2 = function () {
     let doSomething = function () {
-        for (var i=0; i<=5; i++) {
+        for (let i=0; i<=5; i++) {
             setTimeout(function clog() {console.log(i)}, i*1000);
         }
     }
@@ -135,7 +135,7 @@ let q2 = function () {
 
 function qCalc() { // A method creating and returning a single {doSomething: ***, desc: ***} object
     this.calcFactory = new Calculator();
-    this.desc = "Calculator you can use add or sub to increase or decrease the number to get the answer: "
+    this.desc = "Calculator you can use add or sub to increase or decrease the number to get an answer."
     return this;
 }
 
@@ -156,10 +156,13 @@ function qAsync(){
     this.doAsync = function (ms) {
         return new Promise(resolve => setTimeout(resolve, ms));
     }
-    this.desc = "in order to wait 11.5 sec, call exec which calls doAsync, and see the print in the console"
+    this.desc = "This function waits elven and a half seconds then calls exec," +
+        " that calls doAsync then the function prints to the log.";
     this.exec =  async function () {
         await this.doAsync(11500);
-        console.log("did you see this after 11.5 sec?");
+        const print = "The text changed 11.5 seconds after! Do you remember what it said before?";
+        console.log(print)
+        return print;
     }
 }
 
